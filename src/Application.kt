@@ -53,6 +53,11 @@ fun Application.module(testing: Boolean = false) {
                 val frame = incoming.receive()
                 if (frame is Frame.Text) {
                     send(Frame.Text("Client said: " + frame.readText()))
+                    if(frame.readText().equals("What's your name?")){
+                        send(Frame.Text("My name is Server"))
+                    }else{
+                        send(Frame.Text("Server says: I am a server. Not a chatbot"))
+                    }
                 }
             }
         }
